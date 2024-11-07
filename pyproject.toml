@@ -1,0 +1,14 @@
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "Hubby"
+version = "0.0.1"
+description = "Hubby, a python library for the github api"
+authors = [
+    { name = "Graham", email = "terpstragraham@gmail.com" }
+]
+readme = "README.md"
+license = { text = "BSD-3-Clause" }
+dependencies = []
