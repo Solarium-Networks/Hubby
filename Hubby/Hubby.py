@@ -5,7 +5,7 @@ from github import Github
 # set up the static variables
 # None
 
-class hubby:
+class repos:
     @staticmethod
     def setup():
         Private.AuthUser()
@@ -90,6 +90,53 @@ class hubby:
         RepoToDelFile.delete_file(contents.path, "remove test", contents.sha, branch="test")
 
     @staticmethod
+    def TopTenReffers(Owner, RepoName):
+        RepoToGetReffers = g.get_repo(f"{Owner}/{RepoName}")
+        contents = RepoToGetReffers.get_top_referrers()
+        print(contents)
+
+    @staticmethod
+    def TopContent(Owner, RepoName):
+        RepoToGetTopContent = g.get_repo(f"{Owner}/{RepoName}")
+        contents = RepoToGetTopContent.get_top_paths()
+        print(contents)
+
+    @staticmethod
+    def GetClones(Owner, RepoName):
+        RepoToGetClones = g.get_repo(f"{Owner}/{RepoName}")
+        contents = RepoToGetClones.get_clones_traffic()
+        contents = RepoToGetClones.get_clones_traffic(per="week")
+        print(contents)
+
+    @staticmethod
+    def GetViews(Owner, RepoName):
+        RepoToGetViews = g.get_repo(f"{Owner}/{RepoName}")
+        contents = RepoToGetViews.get_views_traffic()
+        contents = RepoToGetViews.get_views_traffic(per="week")
+        print(contents)
+
+    @staticmethod
     def MarkNotifsRead(Owner, RepoName):
         RepoToMarkNotifsRead = g.get_repo(f"{Owner}/{RepoName}")
         RepoToMarkNotifsRead.mark_notifications_as_read()
+
+class branches:
+    @staticmethod
+    def GetBranches(Owner, RepoName):
+        RepoToGetBranches = g.get_repo(f"{Owner}/{RepoName}")
+        list(RepoToGetBranches.get_branches())
+
+    @staticmethod
+    def GetHeadCommit(Owner, RepoName, Branch):
+        RepoToGetBranchHeadCommit = g.get_repo(f"{Owner}/{RepoName}").get_branch(Branch)
+        RepoToGetBranchHeadCommit.commit
+
+    @staticmethod
+    def GetProtectionStatus(Owner, RepoName, Branch):
+        RepoToGetBranchProtectionStatus = g.get_repo(f"{Owner}/{RepoName}").get_branch(Branch)
+        RepoToGetBranchProtectionStatus.protected
+
+    @staticmethod
+    def GetRequiredStatus(Owner, RepoName, Branch):
+        RepoToGetRequiredStatus = g.get_repo(f"{Owner}/{RepoName}").get_branch(Branch)
+        RepoToGetRequiredStatus.get_required_status_checks()
