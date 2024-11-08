@@ -7,7 +7,8 @@ name = "Hubby"
 version = "0.0.1"
 description = "Hubby, a python library for the github api"
 authors = [
-    { name = "Graham", email = "terpstragraham@gmail.com" }
+    { name = "Webbrowser11", email = "terpstragraham@gmail.com" }
+    { name = "W_h_at", email = ""}
 ]
 readme = "README.md"
 license = { text = "BSD-3-Clause" }
