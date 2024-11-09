@@ -1,5 +1,5 @@
 # Hubby
 Hubby, a python library for the github api
 
-# Requirements
+# Install the Requirements
 `pip install -r requirements.txt`
