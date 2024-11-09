@@ -5,11 +5,19 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "Hubby"
 version = "1.0.0"
-description = "Hubby, a python library for the github api"
+description = "Hubby, a Python library for interacting with the GitHub API"
 authors = [
-    { name = "Webbrowser11", email = "terpstragraham@gmail.com" }
+    { name = "Webbrowser11", email = "terpstragraham@gmail.com" },
     { name = "W_h_at", email = "whatonscratch@gmail.com" }
 ]
 readme = "README.md"
 license = { text = "BSD-3-Clause" }
 dependencies = []
+
+keywords = ["GitHub", "API", "Python", "Hubby"]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: BSD License",
+    "Operating System :: OS Independent",
+]
+requires-python = ">=3.12"
