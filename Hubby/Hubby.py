@@ -183,3 +183,54 @@ class commit:
     def GetCommitDate(Commit)
         commit = repo.get_commit(sha=sha)
         print(commit.commit.author.date)
+
+class PR:
+    @staticmethod
+    def NewPr(Owner, RepoName, Branch, Title, Body):
+        RepoToMakePr = g.get_repo(f"{Owner}/{RepoName}")
+        RepoToMakePr.create_pull(base=Branch, head="develop", title=Title, body=Body)
+    
+    @staticmethod
+    def GetPrByNum(Owner, RepoName, PrNum):
+        RepoToGetPr = g.get_repo(f"{Owner}/{RepoName}")
+        RepoToGetPr.get_pull(PrNum)
+
+    @staticmethod
+    def GetPrByQuery(Owner, RepoName, State, Topic):
+        if state not in ["Open","Closed"]:
+            raise ValueError("State must be 'Open' or 'Closed'")
+        else:
+            RepoToGetPr = g.get_repo(f"{Owner}/{ReponName}")
+            pulls = RepoToGetPr.get_pulls(state=State, sort=Topic, base='master')
+            for pr in pulls:
+               print(pr.number)
+
+    @staticmethod
+    def comment(Owner, RepoName, Content):
+        RepoToComment = g.get_repo(f"{Owner}/{RepoName}")
+        pr = repo.get_pull(2390)
+        pr.create_comment(Content)
+
+class issues:
+    # to be worked on
+
+class milestone:
+    @staticmethod
+    def GetMsList(Owner, RepoName, State):
+        if state not in ["Open","Closed"]:
+            raise ValueError("State must be 'Open' or 'Closed'")
+        else:
+            RepoToGetLs = g.get_repo(f'{Owner}/{RepoName}')
+            open_milestones = RepoToGetLs.get_milestones(state=State)
+            for milestone in open_milestones:
+               print(milestone)
+
+    @staticmethod
+    def GetMs(Owner, RepoName, MsNum):
+        RepoToGetMs = g.get_repo(f'{Owner}/{RepoName}')
+        RepoToGetMs.get_milestone(number=MsNum)
+
+    @staticmethod
+    def MakeMs(Owner, RepoName, Title, Desc):
+        RepoToMakeMs = g.get_repo(f'{Owner}/{RepoName}')
+        RepoToMakeMs.create_milestone(title=Title, description=Desc)        
