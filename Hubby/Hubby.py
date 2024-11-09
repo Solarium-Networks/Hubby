@@ -212,8 +212,29 @@ class PR:
         pr.create_comment(Content)
 
 class issues:
-    # to be worked on
+    @staticmethod
+    def GetIssue(Owner, RepoName, IssueNum):
+        RepoToGetIssue = g.get_repo(f"{Owner}/{RepoName}")
+        RepoToGetIssue.get_issue(number=IssueNum)
 
+    @staticmethod
+    def CommentOnIssue(Owner, RepoName, IssueNum, Comment):
+        RepoToCommentIssue = g.get_repo(f"{Owner}/{RepoName}")
+        issue = RepoToCommentIssue.get_issue(number=IssueNum)
+        issue.create_comment(Comment)
+
+    @staticmethod
+    def NewIssue(Owner, RepoName, Title, Body):
+        RepoToGet = g.get_repo(f"{Owner}/{RepoName}")
+        repo.create_issue(title=Title, body=Body)
+
+    @staticmethod
+    def CloseIssues(Owner, RepoName):
+        RepoToCloseIssues = g.get_repo(f"{Owner}/{RepoName}")
+        open_issues = RepoToCloseIssues.get_issues(state='open')
+        for issue in open_issues:
+            issue.edit(state='closed')
+    
 class milestone:
     @staticmethod
     def GetMsList(Owner, RepoName, State):
