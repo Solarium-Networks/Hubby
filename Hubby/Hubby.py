@@ -5,9 +5,14 @@ from github import Github
 # set up the static variables
 # None
 
-class repos:
+class Repos:
     @staticmethod
-    def setup():
+    def GetRepoByName(Owner, RepoName):
+        repo = g.get_repo("PyGithub/PyGithub")
+        repo.name
+    
+    @staticmethod
+    def Setup():
         Private.AuthUser()
 
     @staticmethod
@@ -120,7 +125,7 @@ class repos:
         RepoToMarkNotifsRead = g.get_repo(f"{Owner}/{RepoName}")
         RepoToMarkNotifsRead.mark_notifications_as_read()
 
-class branches:
+class Branches:
     @staticmethod
     def GetBranches(Owner, RepoName):
         RepoToGetBranches = g.get_repo(f"{Owner}/{RepoName}")
@@ -140,3 +145,41 @@ class branches:
     def GetRequiredStatus(Owner, RepoName, Branch):
         RepoToGetRequiredStatus = g.get_repo(f"{Owner}/{RepoName}").get_branch(Branch)
         RepoToGetRequiredStatus.get_required_status_checks()
+
+class Miscellaneous:
+    @staticmethod
+    def GetCurrentUser():
+        user = g.get_user()
+        user.login
+
+    @staticmethod
+    def GetUserByName(Name):
+        user = g.get_user(Name)
+        user.name
+
+    @staticmethod
+    def GetOrgByName(Org):
+        org = g.get_organization(Org)
+        org.login
+
+    @staticmethod
+    def GECL():
+        enterprise = g.get_enterprise_consumed_licenses("PyGithub")
+        enterprise_consumed_licenses = enterprise.get_enterprise_consumed_licenses()
+        enterprise_consumed_licenses.total_seats_consumed
+
+    @staticmethod
+    def WhatsGECL():
+        print("GECL stands for: Get Enterprise consumed Licenses by Name")
+
+    @staticmethod
+    def SearchRepoByLang():
+        repositories = g.search_repositories(query='language:python')
+        for repo in repositories:
+           print(repo)
+
+class commit:
+    @staticmethod
+    def GetCommitDate(Commit)
+        commit = repo.get_commit(sha=sha)
+        print(commit.commit.author.date)
