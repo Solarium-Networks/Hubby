@@ -3,11 +3,12 @@ requires = ["setuptools", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "Hubby"
+name = "HubbyWrapper"
 version = "1.0.0"
 description = "Hubby, a Python library for interacting with the GitHub API"
 authors = [
     { name = "Webbrowser11", email = "terpstragraham@gmail.com" }
+    { name = "w_h_at", email = "whatonscratch@gmail.com" }
 ]
 readme = "README.md"
 license = { text = "BSD-3-Clause" }
