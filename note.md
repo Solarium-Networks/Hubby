@@ -5,7 +5,7 @@ info for devs
 ### download:
 download the source code and pip install: build and twine
 ## change directories
-`cd C:\Users\Username\Downloads\Hubby-0.0.1`
+`cd C:\Users\Username\Downloads\Hubby-1.0.0`
 ## build:
 `python -m build`
 ##
